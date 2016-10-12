@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>console.log("hola")</script>
+
+<div id="demo">
+    <h2>Exemple GET Ajax</h2>
+    <button type="button" onclick="GETexamplesincron()">Get síncron</button>
+    <button type="button" onclick="GETexampleasincron()">Get asíncron</button>
+
+    <h2>Exemple POST Ajax</h2>
+    <button type="button" onclick="POSTexamplesincron()">POST síncron</button>
+    <button type="button" onclick="POSTexampleasincron()">POST asíncron</button>
+
+    <h2>Exemple PUT Ajax</h2>
+    <button type="button" onclick="PUTexamplesincron()">PUT síncron</button>
+    <button type="button" onclick="PUTexampleasincron()">PUT asíncron</button>
+
+    <h2>Exemple DELETE Ajax</h2>
+    <button type="button" onclick="DELETEexamplesincron()">DELETE síncron</button>
+    <button type="button" onclick="DELETEexampleasincron()">DELETE asíncron</button>
+</div>
+
+<script>
+
+//Funció GETexemple síncron i asíncron
+
+function GETexamplesincron() {
+    var req = new XMLHttpRequest();
+    req.open("GET", "http:\\www.google.es/", false);
+    req.send(null);
+    if (req.status == 200)
+    console.log(req.responseText);
+}
+
+function GETexampleasincron() {
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(req.responseText);
+        }else
+            console.log("Error al demanar la pàgina\n");
+    };
+    //req.send(null);
+}
+
+//Funció POSTexemple síncron i asíncron
+
+function POSTexamplesincron() {
+    var req = new XMLHttpRequest();
+    req.open("POST", "prova.html", false);
+    req.send(null);
+    if (req.status == 200)
+        console.log(req.responseText);
+}
+
+function POSTexampleasincron() {
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(req.responseText);
+        }else
+            console.log("Error\n");
+    };
+    req.send("name=Manel&sn1=Gavaldà");
+}
+
+function PUTexamplesincron() {
+    var req = new XMLHttpRequest();
+    req.open("PUT", "http:\\www.google.es/", false);
+    req.send(null);
+    if (req.status == 200)
+        console.log(req.responseText);
+}
+
+function PUTexampleasincron() {
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(req.responseText);
+        }else
+            console.log("Error\n");
+    };
+    //req.send(null);
+}
+
+function DELETEexamplesincron() {
+    var req = new XMLHttpRequest();
+    req.open("DELETE", "http:\\www.google.es/", false);
+    req.send(null);
+    if (req.status == 200)
+        console.log(req.responseText);
+}
+
+function DELETEexampleasincron() {
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(req.responseText);
+        }else
+            console.log("Error\n");
+    };
+    //req.send(null);
+}
+
+</script>
+</body>
+</html>
